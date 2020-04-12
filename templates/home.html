@@ -26,28 +26,28 @@
                 <h4 class="center orange-text text-darken-4">Confirmed Cases</h4>
                 <div class="center person-div">
                     <i class="material-icons medium prefix orange-text text-darken-4">person</i>
-                    <h5 class="orange-text text-darken-4">123123</h5>
+                    <h5 class="orange-text text-darken-4">{{ bd_data.total_cases }}</h5>
                 </div>
             </div>
             <div class="col s12 l6 sect-1">
                 <h4 class="center light-green-text text-darken-1">Recovered</h4>
                 <div class="center person-div">
                     <i class="material-icons medium prefix light-green-text text-darken-1">person</i>
-                    <h5 class="light-green-text text-darken-1">123123</h5>
+                    <h5 class="light-green-text text-darken-1">{{ bd_data.recovered }}</h5>
                 </div>
             </div>
             <div class="col s12 l6 sect-1">
-                <h4 class="center grey-text text-darken-1">Critical condition</h4>
+                <h4 class="center grey-text text-darken-1">Active Cases</h4>
                 <div class="center person-div">
                     <i class="material-icons medium prefix">person</i>
-                    <h5>123123</h5>
+                    <h5>{{ bd_data.active_cases }}</h5>
                 </div>
             </div>
             <div class="col s12 l6 sect-1">
                 <h4 class="center red-text text-darken-4">Deaths</h4>
                 <div class="center person-div">
                     <i class="material-icons medium prefix red-text text-darken-4">person</i>
-                    <h5 class="red-text text-darken-4">123123</h5>
+                    <h5 class="red-text text-darken-4">{{ bd_data.deaths }}</h5>
                 </div>
             </div>
         </div>
