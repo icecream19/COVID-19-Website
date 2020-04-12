@@ -1,0 +1,60 @@
+p{
+    font-size: 17px;
+}
+
+a { 
+    color: inherit; 
+} 
+
+.banner-text{
+    margin-top: 100px;
+}
+
+.parallax-container{
+    height: 70vh;
+}
+
+#banner-img{
+    filter: brightness(50%);
+}
+
+.person-div {
+    padding-top: 25px;
+}
+
+.person-num {
+    padding-top: -10px;
+}
+
+.sect-1 {
+    margin-top: 25px;
+}
+
+.card {
+    height: 450px;
+}
+
+footer ul li {
+    padding-top: 10px;
+}
+
+.section{
+    padding: 4vw 0;
+}
+
+.measures-row {
+    padding: 25px 0;
+}
+form{
+    padding: 20px 0;
+}
+
+input::placeholder {
+    color: teal;
+}
+
+@media screen and (max-width: 448px){
+    h3 {
+        font-size: 2.4rem;
+    }
+}

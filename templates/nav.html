@@ -1,0 +1,20 @@
+<!----- navbar ----->
+<div class="navbar-fixed">
+    <nav class="nav-wrapper teal lighten-2">
+        <div class="container">
+            <a href="{% url 'corona_app:home-page' %}" class="brand-logo">nCOVID</a>
+            <a href="" data-target='mobile-nav' class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="hide-on-med-and-down right">
+                <li><a href="{% url 'corona_app:home-page' %}">Home</a></li>
+                <li><a href="{% url 'corona_app:worldwide-page' %}">Worldwide Data</a></li>
+                <li><a href="{% url 'corona_app:preventive-measures-page' %}">Preventive Measures</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<ul class="sidenav" id="mobile-nav"> <!-- side navbar for mobile -->
+    <li><a href="{% url 'corona_app:home-page' %}">Home</a></li>
+    <li><a href="{% url 'corona_app:worldwide-page' %}">Worldwide Data</a></li>
+    <li><a href="{% url 'corona_app:preventive-measures-page' %}">Preventive Measures</a></li>
+</ul>
+<!---x- navbar --x-->

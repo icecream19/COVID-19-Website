@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section class="section container center">
+        <div class="row">
+            <h2 class="center teal-text text-lighten-1">Worldwide Current Situation</h2>
+            <form>
+                <div class="input-field">
+                  <input id="search" type="search" placeholder="Enter country name" required>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            <div class="col s12 l6 sect-1">
+                <h4 class="center orange-text text-darken-4">Confirmed Cases</h4>
+                <div class="center person-div">
+                    <i class="material-icons medium prefix orange-text text-darken-4">person</i>
+                    <h5 class="orange-text text-darken-4">123123</h5>
+                </div>
+            </div>
+            <div class="col s12 l6 sect-1">
+                <h4 class="center light-green-text text-darken-1">Recovered</h4>
+                <div class="center person-div">
+                    <i class="material-icons medium prefix light-green-text text-darken-1">person</i>
+                    <h5 class="light-green-text text-darken-1">123123</h5>
+                </div>
+            </div>
+            <div class="col s12 l6 sect-1">
+                <h4 class="center grey-text text-darken-1">Critical condition</h4>
+                <div class="center person-div">
+                    <i class="material-icons medium prefix">person</i>
+                    <h5>123123</h5>
+                </div>
+            </div>
+            <div class="col s12 l6 sect-1">
+                <h4 class="center red-text text-darken-4">Deaths</h4>
+                <div class="center person-div">
+                    <i class="material-icons medium prefix red-text text-darken-4">person</i>
+                    <h5 class="red-text text-darken-4">123123</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

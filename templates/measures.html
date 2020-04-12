@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!----- banner ----->
+    <div class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container banner-text">
+                <h1 class="white-text center">COVID-19 Safety Measures</h1>
+                <h3 class="white-text center">Being a hero is simple!</h3>
+            </div>
+        </div>
+        <div class="parallax">
+            <img src="{% static 'images/covid-cover2.jpg' %}" alt="COVID patient image" id="banner-img">
+        </div>
+    </div>
+    <!---x- banner --x-->
+
+    <!----- Safety Measures ----->
+    <section class="section container">
+        <h2 class="center blue-grey-text text-darken-2">Save The Earth From The Pandemic by...</h2>
+        <div class="row measures-row">
+            <div class="col s12 l5">
+                <h4 class="teal-text teal-lighten-3">Washing Your Hands Frequently</h4>
+                <p class="blue-grey-text text-darken-2">
+                    Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash 
+                    them with soap and water. Doing this will kill the viruses that may have been
+                    on your hand.
+                </p>
+            </div>
+            <div class="col s12 l5 offset-l2">
+                <img src="{% static 'images/covid-handwash.jpg' %}" alt="" class="responsive-img material-box z-depth-2">
+            </div>
+        </div>
+        <div class="row measures-row">
+            <div class="col s12 l5 right-align push-l7">
+                <h4 class="teal-text teal-lighten-3">Maintaining Social Distance</h4>
+                <p class="blue-grey-text text-darken-2">
+                    Maintain at least 1 metre (3 feet) distance between yourself and anyone who is 
+                    coughing or sneezing, who might be carrying the virus without realizing. 
+                </p>
+            </div>
+            <div class="col s12 l5 pull-l5">
+                <img src="{% static 'images/covid-socialdistance.jpg' %}" alt="" class="responsive-img material-box z-depth-2">
+            </div>
+        </div>
+        <div class="row measures-row">
+            <div class="col s12 l5">
+                <h4 class="teal-text teal-lighten-3">Avoiding Touching Your Face</h4>
+                <p class="blue-grey-text text-darken-2">
+                    Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer 
+                    the virus to your eyes, nose or mouth. From there, the virus can enter your body and can 
+                    make you sick.
+                </p>
+            </div>
+            <div class="col s12 l5 offset-l2">
+                <img src="{% static 'images/covid-mask2.jpg' %}" alt="" class="responsive-img material-box z-depth-2">
+            </div>
+        </div>
+        <div class="row measures-row">
+            <div class="col s12 l5 right-align push-l7">
+                <h4 class="teal-text teal-lighten-3">Practicing Respiratory Hygine</h4>
+                <p class="blue-grey-text text-darken-2">
+                    Make sure you, and the people around you, follow good respiratory hygiene. 
+                    This means covering your mouth and nose with your bent elbow or tissue when you cough or 
+                    sneeze. Then dispose of the used tissue immediately. 
+                </p>
+            </div>
+            <div class="col s12 l5 pull-l5">
+                <img src="{% static 'images/covid-sneeze.jpg' %}" alt="" class="responsive-img material-box z-depth-2">
+            </div>
+        </div>
+        <div class="row measures-row">
+            <div class="col s12 l5">
+                <h4 class="teal-text teal-lighten-3">Seeking Medical Care Early In Case of...</h4>
+                <p class="blue-grey-text text-darken-2">
+                    a fever, cough and/or difficulty breathing.Stay home if unwell. 
+                    Seek medical attention and call in advance. Follow the directions of your local 
+                    health authority.
+                </p>
+            </div>
+            <div class="col s12 l5 offset-l2">
+                <img src="{% static 'images/covid-sick.jpg' %}" alt="" class="responsive-img material-box z-depth-2">
+            </div>
+        </div>
+        <div class="row measures-row">
+            <div class="col s12 l5 right-align push-l7">
+                <h4 class="teal-text teal-lighten-3">Following Advice Given By Your Healthcare Provider</h4>
+                <p class="blue-grey-text text-darken-2">
+                    Stay informed on the latest developments about COVID-19. Follow advice given by your 
+                    healthcare provider on 
+                    how to protect yourself and others from COVID-19.
+                </p>
+            </div>
+            <div class="col s12 l5 pull-l5">
+                <img src="{% static 'images/covid-fight2.jpg' %}" alt="" class="responsive-img material-box z-depth-3">
+            </div>
+        </div>
+        <p class="center">All data obtained from the <a target="_blank" href="https://www.who.int/" class="light-blue-text">World Health Organization (WHO)</a></p>
+    </section>
+    <!--x-- Safety Measures --x-->
+
+    <section class="section container center">
+        <div class="row">
+            <div class="col s12">
+                <img src="{% static 'images/covid-fight.png' %}" class="responsive-img" alt="">
+            </div>
+            <div class="col s12 center">
+                <H4 class=" blue-grey-text text-darken-2">It really doesn't take much to do this..</H4>
+                <p class="teal-text text-darken-1">
+                    By following the above mentioned guidelines, you will not be only saving yourself, but the entire world itself by
+                    reducing the spread of the highly contagious virus, COVID-19. Simply being aware of your surroundings can save
+                    countless numbers of people! Its up to YOU if YOU want to step up, be a hero or not. Silence really is the strongest
+                    weapon: Lock yourself up in your home, enjoy time with your family, and you still get to punch COVID-19 by its face!
+                </p>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
