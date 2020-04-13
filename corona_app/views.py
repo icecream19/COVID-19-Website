@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 #3rd party imports
 import requests
+from bs4 import BeautifulSoup
 
 
 
@@ -15,50 +16,49 @@ def home(request, *args, **kwargs):
     try print(request) to verify the data
     '''
 
-    url = "https://coronavirus-map.p.rapidapi.com/v1/summary/region"
+    bd_url = 'https://www.worldometers.info/coronavirus/country/bangladesh/'
+    
+    r = requests.get(bd_url)
+    data = r.text
+    soup = BeautifulSoup(data, 'html.parser')
 
-    querystring = {"region":"Bangladesh"}
-    headers = {
-        'x-rapidapi-host': "coronavirus-map.p.rapidapi.com",
-        'x-rapidapi-key': "64d7e3123bmsha7ad177c036f2abp187bbdjsn5ed1bd1f4442"
-    }
+    bd_list = []
 
-    # response = requests.request("GET", url, headers=headers, params=querystring).json()
-    r = requests.get(url, headers=headers, params=querystring).json()
-
-
+    for item in soup.find_all('div', {'class': 'maincounter-number'}):
+        bd_list.append(item.text.strip('\n')) 
+    
     bd_data = {
-        'total_cases': r['data']['summary']['total_cases'],
-        'active_cases': r['data']['summary']['active_cases'], 
-        'deaths': r['data']['summary']['deaths'],
-        'recovered': r['data']['summary']['recovered'],
+        'total_cases': bd_list[0],
+        'deaths': bd_list[1],
+        'recovered': bd_list[2],
+        'active_cases': int(bd_list[0]) - int(bd_list[1]) - int(bd_list[2]),
     }
     
     '''
     Retrieve latest news and articles about COVID-19
     '''
 
-    ARTICLE_URL = 'https://newsapi.org/v2/everything?q=coronavirus&apiKey=591d4d4f1f514e18be25748b8a230ed0'
+    # ARTICLE_URL = 'https://newsapi.org/v2/everything?q=coronavirus&apiKey=591d4d4f1f514e18be25748b8a230ed0'
 
-    response = requests.get(ARTICLE_URL).json()
+    # response = requests.get(ARTICLE_URL).json()
 
-    news_threshold = response['articles'][:8]
+    # news_threshold = response['articles'][:8]
 
-    news_listings = []
+    # news_listings = []
 
-    for news in news_threshold:
-        title = news['title']
-        description = news['description']
-        news_url = news['url']
-        img_url = news['urlToImage']
+    # for news in news_threshold:
+    #     title = news['title']
+    #     description = news['description']
+    #     news_url = news['url']
+    #     img_url = news['urlToImage']
 
-        news_listings.append((title, description, news_url, img_url))
+    #     news_listings.append((title, description, news_url, img_url))
 
 
 
     context = {
         'bd_data': bd_data,
-        'news_listings': news_listings,
+        # 'news_listings': news_listings,
     }
     
 
