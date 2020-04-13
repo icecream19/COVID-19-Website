@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}nCOVID{% endblock title %}
 {% block content %}
     <!----- banner ----->
     <div class="parallax-container">
@@ -72,6 +73,7 @@
     <!----- Articles ----->
     <section class="section container scrollspy" id="articles">
         <h2 class="teal-text teal-lighten-1 center">Top International News & Articles</h2>
+        <p class="grey-text text-darken-1 center">Accessed from newsapi.org</p>
         <div class="row">
             {% for news in news_listings %}
             <div class="col s12 m6">

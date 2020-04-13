@@ -65,7 +65,59 @@ def home(request, *args, **kwargs):
     return render(request, 'home.html', context)
 
 def worldwide(request):
-    return render(request, 'worldwide.html')
+    '''
+    Shows the worldwide data by default.
+    If the user passes in a name of a country/region (inside the form)
+    correctly, the data for that country/region will be displayed.
+    If the data passed in is incorrect (if the API status is 404), then an error page will be displayed.
+    '''
+
+
+    region = 'Worldwide'
+    url = "https://coronavirus-map.p.rapidapi.com/v1/summary/latest"
+
+    headers = {
+        'x-rapidapi-host': "coronavirus-map.p.rapidapi.com",
+        'x-rapidapi-key': "64d7e3123bmsha7ad177c036f2abp187bbdjsn5ed1bd1f4442"
+    }
+
+    r = requests.get(url, headers=headers).json()
+
+    if request.method == 'POST':
+        url = "https://coronavirus-map.p.rapidapi.com/v1/summary/region"
+
+        search_value = request.POST.get('search')
+        querystring = {"region":search_value}
+        headers = {
+            'x-rapidapi-host': "coronavirus-map.p.rapidapi.com",
+            'x-rapidapi-key': "64d7e3123bmsha7ad177c036f2abp187bbdjsn5ed1bd1f4442"
+        }
+
+        r = requests.get(url, headers=headers, params=querystring).json()
+        region = search_value
+
+    if r['type'] == 'error':
+
+        context = {
+            'search_value': request.POST.get('search')
+        }
+
+        return render(request, 'error.html', context)
+
+
+    world_data = {
+        'total_cases': r['data']['summary']['total_cases'],
+        'active_cases': r['data']['summary']['active_cases'],
+        'recovered': r['data']['summary']['recovered'],
+        'deaths': r['data']['summary']['deaths'],
+    } 
+    
+    context = {
+        'world_data': world_data,
+        'region': region
+    }
+    
+    return render(request, 'worldwide.html', context)
 
 def measures(request):
     return render(request, 'measures.html')
