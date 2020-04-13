@@ -5,3 +5,15 @@
 #articles p {
     overflow: hidden;
 }
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 3.2rem;
+}
+
+.second-banner-text {
+    font-size: 3.05;
+}
