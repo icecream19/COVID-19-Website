@@ -73,102 +73,20 @@
     <section class="section container scrollspy" id="articles">
         <h2 class="teal-text teal-lighten-1 center">Top International News & Articles</h2>
         <div class="row">
+            {% for news in news_listings %}
             <div class="col s12 m6">
                 <div class="card hoverable">
                     <div class="card-image">
-                        <img id="banner-img" src="{% static 'images/covid-mask.jpg' %}" alt="">
-                        <span class="card-title flow-text">The Awesome Title</span>
-                        <a class="btn-floating btn-med halfway-fab teal lighten-2 waves-effect waves-darken pulse red"><i class="material-icons">add</i></a>
+                        <img id="banner-img" src="{{ news.3 }}" alt="">
+                        <span class="card-title flow-text">{{ news.0 }}</span>
+                        <a href="{{ news.2 }}" target="_blank" class="btn-floating btn-med halfway-fab teal lighten-2 waves-effect waves-darken pulse red"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
-                        <p class="grey-text text-darken-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium nobis, sunt vero architecto, voluptas impedit numquam eligendi aperiam facilis quam eius aut. Repudiandae ex recusandae quibusdam officia dignissimos sint nihil.</p>
+                        <p class="grey-text text-darken-2">{{ news.1 }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m6">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img id="banner-img" src="https://indiagoneviral.com/wp-content/uploads/2020/04/20390/authorities-work-to-keep-amish-communities-informed-amid-coronavirus-pandemic.jpg" alt="">
-                        <span class="card-title flow-text">The Awesome Title</span>
-                        <a class="btn-floating btn-med halfway-fab teal lighten-2 waves-effect waves-darken pulse red"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="grey-text text-darken-2">LANCASTER, Pennsylvania — While most Americans are glued to their televisions and cellphones for the latest information on the coronavirus pandemic, the nation's Amish communities — tight-knit Christi</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img id="banner-img" src="{% static 'images/covid-mask.jpg' %}" alt="">
-                        <span class="card-title flow-text">The Awesome Title</span>
-                        <a class="btn-floating btn-med halfway-fab teal lighten-2 waves-effect waves-darken pulse red"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="grey-text text-darken-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium nobis, sunt vero architecto, voluptas impedit numquam eligendi aperiam facilis quam eius aut. Repudiandae ex recusandae quibusdam officia dignissimos sint nihil.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img id="banner-img" src="https://indiagoneviral.com/wp-content/uploads/2020/04/20390/authorities-work-to-keep-amish-communities-informed-amid-coronavirus-pandemic.jpg" alt="">
-                        <span class="card-title flow-text">New York City Schools Are Closed for Rest of Academic Year - The New York Times</span>
-                        <a class="btn-floating btn-med halfway-fab teal lighten-2 waves-effect waves-darken pulse red"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="grey-text text-darken-2">The announcement confirmed that more than 1.1 million students will go without regular schooling for more than three months, as educators struggle to adjust to remote learning.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img id="banner-img" src="https://indiagoneviral.com/wp-content/uploads/2020/04/20390/authorities-work-to-keep-amish-communities-informed-amid-coronavirus-pandemic.jpg" alt="">
-                        <span class="card-title flow-text">New York City Schools Are Closed for Rest of Academic Year - The New York Times</span>
-                        <a class="btn-floating btn-med halfway-fab teal lighten-2 waves-effect waves-darken pulse red"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="grey-text text-darken-2">The announcement confirmed that more than 1.1 million students will go without regular schooling for more than three months, as educators struggle to adjust to remote learning.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img id="banner-img" src="https://indiagoneviral.com/wp-content/uploads/2020/04/20390/authorities-work-to-keep-amish-communities-informed-amid-coronavirus-pandemic.jpg" alt="">
-                        <span class="card-title flow-text">New York City Schools Are Closed for Rest of Academic Year - The New York Times</span>
-                        <a class="btn-floating btn-med halfway-fab teal lighten-2 waves-effect waves-darken pulse red"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="grey-text text-darken-2">The announcement confirmed that more than 1.1 million students will go without regular schooling for more than three months, as educators struggle to adjust to remote learning.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img id="banner-img" src="https://indiagoneviral.com/wp-content/uploads/2020/04/20390/authorities-work-to-keep-amish-communities-informed-amid-coronavirus-pandemic.jpg" alt="">
-                        <span class="card-title flow-text">New York City Schools Are Closed for Rest of Academic Year - The New York Times</span>
-                        <a class="btn-floating btn-med halfway-fab teal lighten-2 waves-effect waves-darken pulse red"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="grey-text text-darken-2">The announcement confirmed that more than 1.1 million students will go without regular schooling for more than three months, as educators struggle to adjust to remote learning.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img id="banner-img" src="https://indiagoneviral.com/wp-content/uploads/2020/04/20390/authorities-work-to-keep-amish-communities-informed-amid-coronavirus-pandemic.jpg" alt="">
-                        <span class="card-title flow-text">New York City Schools Are Closed for Rest of Academic Year - The New York Times</span>
-                        <a class="btn-floating btn-med halfway-fab teal lighten-2 waves-effect waves-darken pulse red"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p class="grey-text text-darken-2">The announcement confirmed that more than 1.1 million students will go without regular schooling for more than three months, as educators struggle to adjust to remote learning.</p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <!--x-- Articles --x-->
