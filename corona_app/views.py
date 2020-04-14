@@ -26,7 +26,7 @@ def home(request, *args, **kwargs):
     bd_list = []
 
     for item in soup.find_all('div', {'class': 'maincounter-number'}):
-        bd_list.append(item.text.strip('\n')) 
+        bd_list.append(item.text.strip('\n').replace(',', '')) 
     
     bd_data = {
         'total_cases': bd_list[0],
