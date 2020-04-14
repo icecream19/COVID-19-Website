@@ -3,6 +3,7 @@ from django.shortcuts import render
 #3rd party imports
 import requests
 from bs4 import BeautifulSoup
+from requests.compat import quote
 
 
 
@@ -11,7 +12,7 @@ from bs4 import BeautifulSoup
 def home(request, *args, **kwargs):
     '''
     The first part fetches the data about current situation in Bangladesh,
-    which is organized inside a dictionary called bd_data, which is passed into
+    which is organized inside a dictionary called bd_data, is passed into
     the context so that it can be presented to frontend.
     try print(request) to verify the data
     '''
@@ -38,86 +39,92 @@ def home(request, *args, **kwargs):
     Retrieve latest news and articles about COVID-19
     '''
 
-    # ARTICLE_URL = 'https://newsapi.org/v2/everything?q=coronavirus&apiKey=591d4d4f1f514e18be25748b8a230ed0'
+    ARTICLE_URL = 'https://newsapi.org/v2/everything?q=coronavirus&apiKey=591d4d4f1f514e18be25748b8a230ed0'
 
-    # response = requests.get(ARTICLE_URL).json()
+    response = requests.get(ARTICLE_URL).json()
 
-    # news_threshold = response['articles'][:8]
+    news_threshold = response['articles'][:8]
 
-    # news_listings = []
+    news_listings = []
 
-    # for news in news_threshold:
-    #     title = news['title']
-    #     description = news['description']
-    #     news_url = news['url']
-    #     img_url = news['urlToImage']
+    for news in news_threshold:
+        title = news['title']
+        description = news['description']
+        news_url = news['url']
+        img_url = news['urlToImage']
 
-    #     news_listings.append((title, description, news_url, img_url))
+        news_listings.append((title, description, news_url, img_url))
 
 
 
     context = {
         'bd_data': bd_data,
-        # 'news_listings': news_listings,
+        'news_listings': news_listings,
     }
     
 
     return render(request, 'home.html', context)
+
+
+
 
 def worldwide(request):
     '''
     Shows the worldwide data by default.
     If the user passes in a name of a country/region (inside the form)
     correctly, the data for that country/region will be displayed.
-    If the data passed in is incorrect (if the API status is 404), then an error page will be displayed.
+    If the data passed in is incorrect (if the world_list is empty), then an error page will be displayed.
     '''
 
-
+    base_url = 'https://www.worldometers.info/coronavirus/'
     region = 'Worldwide'
-    url = "https://coronavirus-map.p.rapidapi.com/v1/summary/latest"
 
-    headers = {
-        'x-rapidapi-host': "coronavirus-map.p.rapidapi.com",
-        'x-rapidapi-key': "64d7e3123bmsha7ad177c036f2abp187bbdjsn5ed1bd1f4442"
-    }
+    r = requests.get(base_url)
+    data = r.text
 
-    r = requests.get(url, headers=headers).json()
+    
 
     if request.method == 'POST':
-        url = "https://coronavirus-map.p.rapidapi.com/v1/summary/region"
+        base_url = 'https://www.worldometers.info/coronavirus/country/{}/'
 
         search_value = request.POST.get('search')
-        querystring = {"region":search_value}
-        headers = {
-            'x-rapidapi-host': "coronavirus-map.p.rapidapi.com",
-            'x-rapidapi-key': "64d7e3123bmsha7ad177c036f2abp187bbdjsn5ed1bd1f4442"
-        }
-
-        r = requests.get(url, headers=headers, params=querystring).json()
+        new_url = base_url.format(search_value.replace(' ', '-'))
+        
         region = search_value
+        r = requests.get(new_url)
+        data = r.text
 
-    if r['type'] == 'error':
+    soup = BeautifulSoup(data, 'html.parser')
 
+    world_list = []
+
+    for item in soup.find_all('div', {'class': 'maincounter-number'}):
+        world_list.append(item.text.strip('\n').replace(',', ''))
+
+    if not world_list:
         context = {
-            'search_value': request.POST.get('search')
+            'search_value' : search_value
         }
 
         return render(request, 'error.html', context)
 
 
     world_data = {
-        'total_cases': r['data']['summary']['total_cases'],
-        'active_cases': r['data']['summary']['active_cases'],
-        'recovered': r['data']['summary']['recovered'],
-        'deaths': r['data']['summary']['deaths'],
-    } 
+        'total_cases': world_list[0],
+        'deaths': world_list[1],
+        'recovered': world_list[2],
+        'active_cases': int(world_list[0]) - int(world_list[1]) - int(world_list[2]),
+    }
     
+
     context = {
         'world_data': world_data,
         'region': region
     }
     
     return render(request, 'worldwide.html', context)
+
+
 
 def measures(request):
     return render(request, 'measures.html')

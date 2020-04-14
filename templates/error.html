@@ -2,7 +2,7 @@
 {% block title %}nCOVID | Error{% endblock title %}
 {% block content %}
     <h5 class="center-align">
-        '{{ search_value }}' does not have any publicly available data (or the region does not exist in the API database)!
+        '{{ search_value }}' does not have any publicly available data (or the region does not exist in the database)!
         <a href="{% url 'corona_app:worldwide-page' %}" class="light-blue-text"> Go back </a>
         and try again!
     </h5>
